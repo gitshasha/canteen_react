@@ -1,0 +1,26 @@
+.orderbox {
+  height: 10vh;
+  width: 90vw;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  background-color: rgb(227, 228, 228);
+}
+.total {
+  width: 80%;
+  font-weight: bold;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+.vieworder {
+  height: 70%;
+  width: 9vw;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 1px;
+  border: 1px solid rgb(238, 76, 76);
+  background-color: rgb(238, 59, 59);
+  border-radius: 0.5em;
+}

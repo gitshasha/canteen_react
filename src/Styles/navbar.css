@@ -1,0 +1,25 @@
+.navbar {
+  height: 10vh;
+  width: 98.7vw;
+  position: sticky;
+  display: flex;
+  background-color: aqua;
+
+  justify-content: space-around;
+}
+.links,
+.mediasvg {
+  height: 50%;
+  width: 60%;
+  margin: auto;
+  display: flex;
+
+  justify-content: space-around;
+}
+.cartnumber {
+  display: flex;
+  position: relative;
+  height: 7vh;
+  width: 8vh;
+  background-color: white;
+}

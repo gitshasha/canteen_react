@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
+.popular {
+  display: flex;
+
+  width: 95vw;
+  margin: auto;
+  flex-direction: column;
+}
+.poputitle {
+  display: flex;
+  justify-content: space-between;
+
+  width: 93vw;
+  margin-left: auto;
+  align-items: center;
+}
+.modal {
+  display: none;
+  overflow: hidden;
+}
+.modalback {
+  height: 90vh;
+  width: 98.9vw;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+
+  position: absolute;
+}
+.modalitem {
+  height: 40vh;
+  width: 100%;
+  background-color: blueviolet;
+  display: flex;
+}
+.plus,
+.minus,
+.fiadd {
+  height: 100%;
+  width: 33.3%;
+  border: 2px solid burlywood;
+  align-items: center;
+}
+.finaladd {
+  height: 5vh;
+  width: 5vw;
+  display: flex;
+  background-color: cadetblue;
+  user-select: none;
+}
+.modalitem img {
+  height: 100%;
+  width: 40%;
+  object-fit: cover;
+}
+.ordertab {
+  display: none;
+}
+.orderplace {
+  position: absolute;
+  top: 40vh;
+  left: 60vh;
+  height: 3vh;
+  width: 5vw;
+  background-color: aqua;
+}
+.modalcontent {
+  position: absolute;
+  height: 50vh;
+  width: 40vw;
+  top: 30vh;
+  opacity: 1;
+  z-index: 1;
+  left: 30vw;
+  background-color: blanchedalmond;
+}
+.sanity {
+  display: flex;
+  overflow-x: scroll;
+  width: 96vw;
+  margin-left: auto;
+}
+.category {
+  width: 94vw;
+  margin: auto;
+  align-items: center;
+}
+.listcont::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.sanity::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.listcont {
+  display: flex;
+  overflow-x: scroll;
+}
+body {
+  background-color: rgb(240, 238, 238);
+  font-family: "Montserrat", sans-serif;
+}
+.list {
+  margin: 1vh;
+}
+.fullorderdetails {
+  background-color: tomato;
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-around;
+}
+.allord {
+  margin: 1em;
+  border: 1px solid black;
+}
+.eachquantitypri {
+  border: 1px solid blue;
+  margin: 1em;
+}
+.eachquan {
+  border: 1px solid blue;
+  margin: 1em;
+}
+@media (max-width: 507px) {
+  .popular {
+    width: 98vw;
+  }
+  .modalcontent {
+    height: 40vh;
+    width: 80vw;
+    top: 30vh;
+    opacity: 1;
+    z-index: 1;
+    left: 5vh;
+  }
+
+  .category {
+    height: 15vh;
+  }
+  .list svg {
+    height: 12vh;
+    width: 12vh;
+    border-radius: 0.5em;
+  }
+  .popuname {
+    font-size: 1.2em;
+  }
+  .catename {
+    font-size: 1em;
+    margin-left: 0.5em;
+  }
+}

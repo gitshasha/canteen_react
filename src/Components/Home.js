@@ -11,6 +11,7 @@ function Home({ setorderno }) {
   const [quantity, setquantity] = useState(1);
   const [eachquantity, seteachquantity] = useState([]);
   const [eachquantityprice, seteachquantityprice] = useState([]);
+  var contfullorderdetails = document.querySelector(".contfullorderdetails");
   useEffect(() => {
     sanityClient
       .fetch(
@@ -37,14 +38,14 @@ function Home({ setorderno }) {
   var modal = document.querySelector(".modal");
   var ordertab = document.querySelector(".ordertab");
   const [category, setcategory] = useState([]);
-  const [categoryname, setcategoryname] = useState("");
+  const [categoryname, setcategoryname] = useState("drinks");
   useEffect(() => {
     sanityClient
       .fetch(
         `*[title== "${categoryname}" ]{
  
           "items": *[_type == "post" && 
-                      references(^._id)]{title,price, mainImage{
+                      references(^._id)]{title,_id,price, mainImage{
                         asset->{
                             url
                         },
@@ -54,79 +55,95 @@ function Home({ setorderno }) {
       )
       .then((data) => setcategory(data));
   }, [categoryname]);
-  category && category.map((order, index) => console.log(order));
+  const [allorderdetails, setallorderdetails] = useState([]);
+  useEffect(() => {
+    setallorderdetails([
+      ...allorderdetails,
+      [
+        totalmodal.title,
+        totalmodal.price,
+        quantity,
+        totalmodal.price * quantity,
+      ],
+    ]);
+    console.log(allorderdetails);
+  }, [cartitem]);
+  const options = category[0] != undefined ? category[0].items : null;
   return (
     <div>
       <div className="modal">
         <div className="modalback"></div>
-        <div className="modalcontent">
-          <svg
-            onClick={() => {
-              modal.style.display = "none";
-            }}
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#1C1C1C"
-            width="24"
-            height="24"
-            viewBox="0 0 20 20"
-            aria-labelledby="icon-svg-title- icon-svg-desc-"
-            role="img"
-            class="sc-rbbb40-0 fmIpur"
-          >
-            <title>cross</title>
-            <path d="M11.42 10.42l3.54-3.54c0.38-0.4 0.38-1.040 0-1.42s-1.020-0.4-1.42 0l-3.54 3.54-3.54-3.54c-0.4-0.4-1.020-0.4-1.42 0s-0.38 1.020 0 1.42l3.54 3.54-3.54 3.54c-0.38 0.38-0.38 1.020 0 1.42 0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28l3.54-3.56 3.54 3.56c0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28c0.38-0.4 0.38-1.040 0-1.42l-3.54-3.54z"></path>
-          </svg>
-          <div className="modalitem">
-            <img src={totalmodal.image} alt="" className="modalimage" />
-            <div className="modalname">
-              <h1>{totalmodal.title}</h1>
+        <div className="modelcontentcontainer">
+          <div className="modalcontent">
+            <svg
+              onClick={() => {
+                modal.style.display = "none";
+              }}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#1C1C1C"
+              width="24"
+              height="24"
+              viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-"
+              role="img"
+              class="sc-rbbb40-0 fmIpur"
+            >
+              <title>cross</title>
+              <path d="M11.42 10.42l3.54-3.54c0.38-0.4 0.38-1.040 0-1.42s-1.020-0.4-1.42 0l-3.54 3.54-3.54-3.54c-0.4-0.4-1.020-0.4-1.42 0s-0.38 1.020 0 1.42l3.54 3.54-3.54 3.54c-0.38 0.38-0.38 1.020 0 1.42 0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28l3.54-3.56 3.54 3.56c0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28c0.38-0.4 0.38-1.040 0-1.42l-3.54-3.54z"></path>
+            </svg>
+            <div className="modalitem">
+              <img src={totalmodal.image} alt="" className="modalimage" />
+              <div className="modalname">
+                <h1>{totalmodal.title}</h1>
 
-              <div className="finaladd">
-                <div
-                  onClick={() => {
-                    setquantity(quantity + 1);
-                  }}
-                  className="plus"
-                >
-                  +
+                <div className="finaladd">
+                  <div
+                    onClick={() => {
+                      setquantity(quantity + 1);
+                    }}
+                    className="plus"
+                  >
+                    +
+                  </div>
+                  <div className="fiadd">{quantity}</div>
+                  <div
+                    onClick={() => {
+                      if (quantity - 1 >= 0) {
+                        setquantity(quantity - 1);
+                      } else {
+                        setquantity(0);
+                      }
+                    }}
+                    className="minus"
+                  >
+                    -
+                  </div>
                 </div>
-                <div className="fiadd">{quantity}</div>
                 <div
+                  className="orderplace"
                   onClick={() => {
-                    if (quantity - 1 >= 0) {
-                      setquantity(quantity - 1);
-                    } else {
-                      setquantity(0);
+                    ordertab.style.display = "block";
+                    setorderno(totalmodal.image);
+                    if (quantity > 0) {
+                      setallorders((allorders) => [...allorders, totalmodal]);
+                      setcartitem(cartitem + 1);
+
+                      seteachquantity((eachquantity) => [
+                        ...eachquantity,
+                        quantity,
+                      ]);
+                      seteachquantityprice((eachquantityprice) => [
+                        ...eachquantityprice,
+                        totalmodal.price * quantity,
+                      ]);
                     }
+                    modal.style.display = "none";
                   }}
-                  className="minus"
                 >
-                  -
+                  Order
                 </div>
+                <h1 className="modalprice">{totalmodal.price}</h1>
               </div>
-              <div
-                className="orderplace"
-                onClick={() => {
-                  ordertab.style.display = "block";
-                  setorderno(totalmodal.image);
-                  if (quantity > 0) {
-                    setcartitem(cartitem + 1);
-                    setallorders((allorders) => [...allorders, totalmodal]);
-                    seteachquantity((eachquantity) => [
-                      ...eachquantity,
-                      quantity,
-                    ]);
-                    seteachquantityprice((eachquantityprice) => [
-                      ...eachquantityprice,
-                      totalmodal.price * quantity,
-                    ]);
-                  }
-                  modal.style.display = "none";
-                }}
-              >
-                Order
-              </div>
-              <h1 className="modalprice">{totalmodal.price}</h1>
             </div>
           </div>
         </div>
@@ -230,7 +247,7 @@ function Home({ setorderno }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               onClick={() => {
-                setcategoryname("cakes");
+                setcategoryname("snack");
               }}
             >
               <path
@@ -314,7 +331,7 @@ function Home({ setorderno }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               onClick={() => {
-                setcategoryname("sandwiches");
+                setcategoryname("breads");
               }}
             >
               <path
@@ -329,34 +346,59 @@ function Home({ setorderno }) {
           </div>
         </div>
       </div>
-      <div className="ordertab">
-        <Ordertab cartitem={cartitem} price={totalmodal.price * quantity} />
-      </div>
-
-      {/* Order details (down bar)*/}
-      <div className="fullorderdetails">
-        <div className="orderhidden">
-          {" "}
-          {allorders &&
-            allorders.map((order, index) => (
-              <div className="allord">{order.title}</div>
-            ))}
-        </div>
-        <div className="eachprice">
-          {eachquantityprice &&
-            eachquantityprice.map((order, index) => (
-              <div className="eachquantitypri">{order}</div>
-            ))}
-        </div>
-        <div className="finalorder">
-          {eachquantity &&
-            eachquantity.map((order, index) => (
-              <div className="eachquan">{order}</div>
-            ))}
-        </div>
-      </div>
       {/* Categories */}
-      <div className="subcategory"></div>
+      <div className="subcategory">
+        {options &&
+          options.map((post, index) => (
+            <div className="sanityeach">
+              {" "}
+              <Items
+                totalmodal={totalmodal}
+                settotalmodal={settotalmodal}
+                setquantity={setquantity}
+                key={post._id}
+                id={post._id}
+                img={post.mainImage.asset.url}
+                title={post.title}
+                modal={modal}
+                price={post.price}
+              />
+            </div>
+          ))}
+      </div>
+      <div className="totalorder">
+        <div className="ordertab">
+          <Ordertab
+            cartitem={cartitem}
+            contfullorderdetails={contfullorderdetails}
+            price={totalmodal.price * quantity}
+          />
+        </div>
+        {/* Order details (down bar)*/}
+        <div className="contfullorderdetails">
+          <div className="fullorderdetails">
+            <div className="orderhidden">
+              {" "}
+              {allorders &&
+                allorders.map((order, index) => (
+                  <div className="allord">{order.title}</div>
+                ))}
+            </div>
+            <div className="eachprice">
+              {eachquantityprice &&
+                eachquantityprice.map((order, index) => (
+                  <div className="eachquantitypri">{order}</div>
+                ))}
+            </div>
+            <div className="finalorder">
+              {eachquantity &&
+                eachquantity.map((order, index) => (
+                  <div className="eachquan">{order}</div>
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -8,11 +8,15 @@
 }
 .total {
   width: 80%;
+  user-select: none;
   font-weight: bold;
   font-size: 1.2em;
   display: flex;
   justify-content: space-between;
   margin: auto;
+}
+.totalname {
+  cursor: pointer;
 }
 .vieworder {
   height: 70%;

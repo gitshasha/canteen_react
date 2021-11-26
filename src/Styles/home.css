@@ -1,10 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
+body {
+  background-color: rgb(240, 238, 238);
+  font-family: "Montserrat", sans-serif;
+}
+
 .popular {
   display: flex;
-
-  width: 95vw;
+  width: 92vw;
   margin: auto;
   flex-direction: column;
+}
+.sanity {
+  display: flex;
+  overflow-x: scroll;
+  width: 92vw;
+  border-radius: 1.2em;
+  margin-left: auto;
 }
 .poputitle {
   display: flex;
@@ -14,22 +25,48 @@
   margin-left: auto;
   align-items: center;
 }
+.subcategory {
+  width: 93vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
 .modal {
+  position: absolute;
   display: none;
-  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 .modalback {
-  height: 90vh;
+  height: 100vh;
   width: 98.9vw;
   background-color: black;
   opacity: 0.5;
   z-index: 1;
-
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+.modalcontent {
   position: absolute;
+  height: 50vh;
+  width: 40vw;
+  opacity: 1;
+  z-index: 1;
+  left: 30vw;
+  background-color: blanchedalmond;
+}
+.modelcontentcontainer {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30vh;
+  z-index: 4;
 }
 .modalitem {
   height: 40vh;
   width: 100%;
+
   background-color: blueviolet;
   display: flex;
 }
@@ -53,9 +90,6 @@
   width: 40%;
   object-fit: cover;
 }
-.ordertab {
-  display: none;
-}
 .orderplace {
   position: absolute;
   top: 40vh;
@@ -64,27 +98,7 @@
   width: 5vw;
   background-color: aqua;
 }
-.modalcontent {
-  position: absolute;
-  height: 50vh;
-  width: 40vw;
-  top: 30vh;
-  opacity: 1;
-  z-index: 1;
-  left: 30vw;
-  background-color: blanchedalmond;
-}
-.sanity {
-  display: flex;
-  overflow-x: scroll;
-  width: 96vw;
-  margin-left: auto;
-}
-.category {
-  width: 94vw;
-  margin: auto;
-  align-items: center;
-}
+
 .listcont::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
@@ -95,17 +109,35 @@
   display: flex;
   overflow-x: scroll;
 }
-body {
-  background-color: rgb(240, 238, 238);
-  font-family: "Montserrat", sans-serif;
-}
 .list {
   margin: 1vh;
 }
+
+.category {
+  width: 92vw;
+  margin: auto;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1.2em;
+}
+.ordertab {
+  display: none;
+  position: fixed;
+  top: 90vh;
+  left: 10vh;
+}
+/*FullOrder details */
+.contfullorderdetails {
+  display: none;
+}
 .fullorderdetails {
-  background-color: tomato;
   display: flex;
-  width: 90%;
+  position: fixed;
+  top: 41vh;
+  left: 10vh;
+  background-color: rgb(218, 218, 230);
+  height: 50vh;
+  width: 91%;
   margin: auto;
   justify-content: space-around;
 }
@@ -121,6 +153,7 @@ body {
   border: 1px solid blue;
   margin: 1em;
 }
+/*Media Queries*/
 @media (max-width: 507px) {
   .popular {
     width: 98vw;
@@ -133,7 +166,6 @@ body {
     z-index: 1;
     left: 5vh;
   }
-
   .category {
     height: 15vh;
   }

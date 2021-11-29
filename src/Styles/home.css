@@ -3,7 +3,6 @@ body {
   background-color: rgb(240, 238, 238);
   font-family: "Montserrat", sans-serif;
 }
-
 .popular {
   display: flex;
   width: 92vw;
@@ -20,7 +19,6 @@ body {
 .poputitle {
   display: flex;
   justify-content: space-between;
-
   width: 93vw;
   margin-left: auto;
   align-items: center;
@@ -135,23 +133,26 @@ body {
   position: fixed;
   top: 41vh;
   left: 10vh;
-  background-color: rgb(218, 218, 230);
+
   height: 50vh;
-  width: 91%;
+  width: 90vw;
+  background-color: rgb(255, 255, 255);
   margin: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+.fullorderdetails::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.cleardetails {
+  width: 90vw;
+  height: 10vh;
   justify-content: space-around;
-}
-.allord {
-  margin: 1em;
-  border: 1px solid black;
-}
-.eachquantitypri {
-  border: 1px solid blue;
-  margin: 1em;
-}
-.eachquan {
-  border: 1px solid blue;
-  margin: 1em;
+  display: flex;
+  margin-bottom: 0.5em;
+  background-color: rgb(232, 232, 235);
 }
 /*Media Queries*/
 @media (max-width: 507px) {

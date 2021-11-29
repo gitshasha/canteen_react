@@ -7,10 +7,15 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "firebase": "^9.3.0",
+    "axios": "^0.24.0",
+    "firebase": "^9.5.0",
+    "prop-types": "^15.7.2",
+    "ra-data-json-server": "^3.19.2",
+    "ra-data-simple-rest": "^3.19.2",
     "react": "^17.0.2",
+    "react-admin": "^3.19.2",
     "react-dom": "^17.0.2",
-    "react-firebase-hooks": "^3.0.4",
+    "react-firebase-hooks": "^4.0.1",
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -20,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json --port 5000"
   },
   "eslintConfig": {
     "extends": [

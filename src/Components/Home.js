@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import sanityClient from "../client";
 import "../Styles/home.css";
-import Downbar from "./Downbar";
+import PostList from "./PostList";
 import Items from "./Items";
 import Ordertab from "./Ordertab";
 function Home({ setorderno }) {
@@ -56,19 +56,9 @@ function Home({ setorderno }) {
       .then((data) => setcategory(data));
   }, [categoryname]);
   const [allorderdetails, setallorderdetails] = useState([]);
-  useEffect(() => {
-    setallorderdetails([
-      ...allorderdetails,
-      [
-        totalmodal.title,
-        totalmodal.price,
-        quantity,
-        totalmodal.price * quantity,
-      ],
-    ]);
-    console.log(allorderdetails);
-  }, [cartitem]);
+
   const options = category[0] != undefined ? category[0].items : null;
+
   return (
     <div>
       <div className="modal">
@@ -135,6 +125,14 @@ function Home({ setorderno }) {
                       seteachquantityprice((eachquantityprice) => [
                         ...eachquantityprice,
                         totalmodal.price * quantity,
+                      ]);
+                      setallorderdetails((allorderdetails) => [
+                        ...allorderdetails,
+                        {
+                          each: totalmodal,
+                          sum: totalmodal.price * quantity,
+                          quan: quantity,
+                        },
                       ]);
                     }
                     modal.style.display = "none";
@@ -369,6 +367,7 @@ function Home({ setorderno }) {
       <div className="totalorder">
         <div className="ordertab">
           <Ordertab
+            allorderdetails={allorderdetails}
             cartitem={cartitem}
             contfullorderdetails={contfullorderdetails}
             price={totalmodal.price * quantity}
@@ -377,28 +376,18 @@ function Home({ setorderno }) {
         {/* Order details (down bar)*/}
         <div className="contfullorderdetails">
           <div className="fullorderdetails">
-            <div className="orderhidden">
-              {" "}
-              {allorders &&
-                allorders.map((order, index) => (
-                  <div className="allord">{order.title}</div>
-                ))}
-            </div>
-            <div className="eachprice">
-              {eachquantityprice &&
-                eachquantityprice.map((order, index) => (
-                  <div className="eachquantitypri">{order}</div>
-                ))}
-            </div>
-            <div className="finalorder">
-              {eachquantity &&
-                eachquantity.map((order, index) => (
-                  <div className="eachquan">{order}</div>
-                ))}
-            </div>
+            {allorderdetails &&
+              allorderdetails.map((post, index) => (
+                <div className="cleardetails">
+                  <h1 className="ordertitle">{post.each.title}</h1>
+                  <h1 className="orderquantity">{post.quan}</h1>
+                  <h1>{post.sum}</h1>
+                </div>
+              ))}
           </div>
         </div>
       </div>
+      <PostList allorderdetails={allorderdetails} />
     </div>
   );
 }

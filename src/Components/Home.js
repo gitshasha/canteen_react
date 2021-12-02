@@ -4,10 +4,13 @@ import "../Styles/home.css";
 import PostList from "./PostList";
 import Items from "./Items";
 import Ordertab from "./Ordertab";
-function Home({ setorderno }) {
+import { auth } from "../firebase-config";
+import { useHistory } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+function Home({ setorderno, setloginstatus }) {
   const [postdat, setpostdat] = useState(null);
   const [totalmodal, settotalmodal] = useState({});
-
+  const history = useHistory();
   const [quantity, setquantity] = useState(1);
   const [eachquantity, seteachquantity] = useState([]);
   const [eachquantityprice, seteachquantityprice] = useState([]);
@@ -59,6 +62,14 @@ function Home({ setorderno }) {
 
   const options = category[0] != undefined ? category[0].items : null;
 
+  const [user, loading, error] = useAuthState(auth);
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return history.replace("/");
+  }, [user, loading]);
+  const logout = () => {
+    auth.signOut();
+  };
   return (
     <div>
       <div className="modal">
@@ -388,6 +399,7 @@ function Home({ setorderno }) {
         </div>
       </div>
       <PostList allorderdetails={allorderdetails} />
+      <button onClick={logout}> Sign Out </button>
     </div>
   );
 }

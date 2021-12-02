@@ -2,43 +2,56 @@
   "posts": [
     {
       "id": 897878,
-      "each": {
-        "image": "sdsd",
-        "title": "shas",
-        "price": 121
-      },
+      "object": [
+        {}
+      ],
       "sum": 120,
       "quan": 12
     },
     {
-      "each": {
-        "title": "food9",
-        "image": "https://cdn.sanity.io/images/jm3o86kd/production/ff878d0336567635dffa1b6d45181a4c9527dbf4-948x632.jpg",
-        "price": 68
-      },
-      "sum": 68,
-      "quan": 1,
+      "object": [
+        [
+          {
+            "each": {
+              "image": "https://cdn.sanity.io/images/jm3o86kd/production/ff878d0336567635dffa1b6d45181a4c9527dbf4-948x632.jpg",
+              "title": "food9",
+              "price": 68
+            },
+            "sum": 68,
+            "quan": 1
+          },
+          {
+            "each": {
+              "image": "https://cdn.sanity.io/images/jm3o86kd/production/4e6175aebc910abf0ee904dd0ee55b16d98c6ec7-954x632.jpg",
+              "title": "food16",
+              "price": 88
+            },
+            "sum": 176,
+            "quan": 2
+          }
+        ]
+      ],
+      "sum": 244,
+      "quan": 3,
       "id": 897879
     },
     {
-      "each": {
-        "title": "food9",
-        "image": "https://cdn.sanity.io/images/jm3o86kd/production/ff878d0336567635dffa1b6d45181a4c9527dbf4-948x632.jpg",
-        "price": 68
-      },
-      "sum": 68,
-      "quan": 1,
+      "object": [
+        [
+          {
+            "each": {
+              "image": "https://cdn.sanity.io/images/jm3o86kd/production/ff878d0336567635dffa1b6d45181a4c9527dbf4-948x632.jpg",
+              "title": "food9",
+              "price": 68
+            },
+            "sum": 136,
+            "quan": 2
+          }
+        ]
+      ],
+      "sum": 136,
+      "quan": 2,
       "id": 897880
-    },
-    {
-      "each": {
-        "title": "food4",
-        "image": "https://cdn.sanity.io/images/jm3o86kd/production/e8c4b98eaa0d7c4cb00adc1d47a6ca65399e5887-360x240.jpg",
-        "price": 100
-      },
-      "sum": 100,
-      "quan": 1,
-      "id": 897881
     }
   ]
 }

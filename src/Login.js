@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -7,19 +7,29 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase-config";
 import { useHistory } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-function Login({ setlogstatus }) {
-  let history = useHistory();
+import { handleLogin } from "ra-core/esm/sideEffect/auth";
+
+function Login() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
   const [user, setUser] = useState({});
-
+  const [user1, loading, error] = useAuthState(auth);
+  const history = useHistory();
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (user1) history.replace("/home");
+  }, [user1, loading]);
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
+
   const register = async () => {
     try {
       const user = await createUserWithEmailAndPassword(
@@ -31,7 +41,6 @@ function Login({ setlogstatus }) {
       console.log(error.message);
     }
   };
-
   const login = async () => {
     try {
       const user = await signInWithEmailAndPassword(
@@ -39,19 +48,17 @@ function Login({ setlogstatus }) {
         loginEmail,
         loginPassword
       );
-      setlogstatus(1);
-      console.log(user);
-      history.push("/home");
+
+      console.log(user.accessToken);
     } catch (error) {
-      setlogstatus(0);
       console.log(error.message);
     }
   };
-
+  const [email, setemail] = useState("");
   const logout = async () => {
     await signOut(auth);
+    console.log("sd");
   };
-
   return (
     <div>
       <div>
@@ -68,10 +75,8 @@ function Login({ setlogstatus }) {
             setRegisterPassword(event.target.value);
           }}
         />
-
         <button onClick={register}> Create User</button>
       </div>
-
       <div>
         <h3> Login </h3>
         <input

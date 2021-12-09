@@ -28,3 +28,31 @@
   background-color: rgb(238, 59, 59);
   border-radius: 0.5em;
 }
+
+.proceed {
+  height: 50vh;
+  width: 50vh;
+  background-color: rgb(99, 182, 182);
+  position: fixed;
+  top: 10%;
+  left: 40%;
+}
+.proceedback {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  left: 0;
+  opacity: 0.5;
+  z-index: -2;
+}
+.holdproceed {
+  display: none;
+}
+.finalplace {
+  height: 5vh;
+  width: 10vh;
+  background-color: blueviolet;
+  border: none;
+}

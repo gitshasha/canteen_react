@@ -1,12 +1,16 @@
 {
   "name": "firebase-auth",
   "version": "0.1.0",
+  "Access-Control-Allow-Origin": "http://localhost:3000",
   "private": true,
   "dependencies": {
     "@sanity/client": "^2.21.10",
+    "@tensorflow-models/speech-commands": "^0.5.4",
+    "@tensorflow/tfjs": "^3.12.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "annyang": "^2.6.1",
     "axios": "^0.24.0",
     "firebase": "^9.5.0",
     "prop-types": "^15.7.2",

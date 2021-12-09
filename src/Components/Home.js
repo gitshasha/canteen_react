@@ -7,6 +7,8 @@ import Ordertab from "./Ordertab";
 import { auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Hearme from "./Hearme";
+
 function Home({ setorderno, setloginstatus }) {
   const [postdat, setpostdat] = useState(null);
   const [totalmodal, settotalmodal] = useState({});
@@ -38,6 +40,7 @@ function Home({ setorderno, setloginstatus }) {
   }, [totalmodal]);
   const [cartitem, setcartitem] = useState(0);
   const [allorders, setallorders] = useState([]);
+
   var modal = document.querySelector(".modal");
   var ordertab = document.querySelector(".ordertab");
   const [category, setcategory] = useState([]);
@@ -128,15 +131,6 @@ function Home({ setorderno, setloginstatus }) {
                     if (quantity > 0) {
                       setallorders((allorders) => [...allorders, totalmodal]);
                       setcartitem(cartitem + 1);
-
-                      seteachquantity((eachquantity) => [
-                        ...eachquantity,
-                        quantity,
-                      ]);
-                      seteachquantityprice((eachquantityprice) => [
-                        ...eachquantityprice,
-                        totalmodal.price * quantity,
-                      ]);
                       setallorderdetails((allorderdetails) => [
                         ...allorderdetails,
                         {
@@ -157,6 +151,7 @@ function Home({ setorderno, setloginstatus }) {
           </div>
         </div>
       </div>
+
       <div className="popular">
         <div className="poputitle">
           <h1 className="popuname">Popular</h1>
@@ -399,6 +394,17 @@ function Home({ setorderno, setloginstatus }) {
         </div>
       </div>
       <PostList allorderdetails={allorderdetails} />
+
+      <Hearme
+        setquantity={setquantity}
+        settotalmodal={settotalmodal}
+        totalmodal={totalmodal}
+        setallorders={setallorders}
+        allorders={allorders}
+        cartitem={cartitem}
+        setcartitem={setcartitem}
+        setallorderdetails={setallorderdetails}
+      />
       <button onClick={logout}> Sign Out </button>
     </div>
   );

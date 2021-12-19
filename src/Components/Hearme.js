@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import * as tf from "@tensorflow/tfjs";
-import * as speech from "@tensorflow-models/speech-commands";
+
 import annyang from "annyang";
 import sanityClient from "../client";
+import { async } from "@firebase/util";
+import { set } from "animejs";
 function Hearme({
   setquantity,
   settotalmodal,
@@ -13,23 +14,46 @@ function Hearme({
   setallorders,
   allorders,
 }) {
-  const [model, setmodel] = useState(null);
-  const [action, setaction] = useState(null);
-  const [labels, setlabels] = useState(null);
-
-  const loadModel = async () => {
-    const recognizer = await speech.create("BROWSER_FFT");
-    console.log("Models Loaders");
-    await recognizer.ensureModelLoaded();
-    console.log(recognizer.wordLabels());
-    setmodel(recognizer);
-    setlabels(recognizer.wordLabels());
-  };
+  const [name1, setname1] = useState("");
+  const [run, setrun] = useState(0);
+  const [voice, setvoice] = useState(null);
   useEffect(() => {
-    loadModel();
-  }, []);
+    if (run > 0) {
+      console.log(run);
+      console.log(name1);
+      sanityClient
+        .fetch(
+          `*[_type=="post" &&   title=="${name1}"]{
 
-  const recognizeCommands = async () => {
+title,
+
+price,
+mainImage{
+    asset->{
+        url
+    },
+    alt
+}
+}`
+        )
+        .then((data) => {
+          setvoice(data);
+          settotalmodal({
+            image: data[0].mainImage.asset.url,
+            title: data[0].title,
+            price: data[0].price,
+          });
+        });
+    }
+
+    setrun(0);
+  }, [run]);
+  // function getdet(na) {
+  //   // console.log(na);
+
+  //   console.log(name1);
+  // }
+  const recognizeCommands = () => {
     console.log("listening");
     if (annyang) {
       var commands = {
@@ -38,29 +62,12 @@ function Hearme({
         },
 
         "add order *tag": function (vara) {
-          console.log(vara);
-          sanityClient
-            .fetch(
-              `*[_type=="post" &&   title== "${vara}"]{
-              _id,
-              title,
-              slug,
-              price,
-              mainImage{
-                  asset->{
-                      url
-                  },
-                  alt
-              }
-          }`
-            )
-            .then((data) => {
-              console.log(data);
-            });
+          setname1(vara);
+          setrun(1);
         },
         "quantity *tag": function (vara) {
           console.log(vara);
-          if (vara > 0) {
+          if (Number(vara) > 0 && totalmodal) {
             setallorders((allorders) => [...allorders, totalmodal]);
             setcartitem(cartitem + 1);
             setallorderdetails((allorderdetails) => [
@@ -84,6 +91,7 @@ function Hearme({
   return (
     <div>
       <button onClick={recognizeCommands}>reco</button>
+      {/* <h1>{name1.title}</h1> */}
     </div>
   );
 }

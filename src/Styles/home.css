@@ -23,13 +23,25 @@ body {
   margin-left: auto;
   align-items: center;
 }
+.category {
+  width: 92vw;
+  margin: auto;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1.2em;
+  margin-bottom: 2vh;
+}
 .subcategory {
   width: 93vw;
   margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  overflow-x: scroll;
+  border-radius: 1em;
 }
+.subcategory::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+/* modal start */
 .modal {
   position: absolute;
   display: none;
@@ -64,7 +76,6 @@ body {
 .modalitem {
   height: 40vh;
   width: 100%;
-
   background-color: blueviolet;
   display: flex;
 }
@@ -97,6 +108,8 @@ body {
   background-color: aqua;
 }
 
+/* modal END */
+
 .listcont::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
@@ -111,13 +124,6 @@ body {
   margin: 1vh;
 }
 
-.category {
-  width: 92vw;
-  margin: auto;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 1.2em;
-}
 .ordertab {
   display: none;
   position: fixed;
@@ -133,7 +139,6 @@ body {
   position: fixed;
   top: 41vh;
   left: 10vh;
-
   height: 50vh;
   width: 90vw;
   background-color: rgb(255, 255, 255);
@@ -159,16 +164,24 @@ body {
   .popular {
     width: 98vw;
   }
+  .modalback {
+    height: 100vh;
+    width: 99.9vw;
+  }
   .modalcontent {
-    height: 40vh;
+    height: 20vh;
     width: 80vw;
-    top: 30vh;
     opacity: 1;
     z-index: 1;
     left: 5vh;
+    background-color: rgb(2, 2, 1);
+  }
+  .orderplace {
+    top: 40vh;
+    left: 30vh;
   }
   .category {
-    height: 15vh;
+    height: 20vh;
   }
   .list svg {
     height: 12vh;

@@ -16,7 +16,7 @@ function Items({
       </div>
       <div className="itemdetails">
         <h1 className="itemname">{title}</h1>
-        <h3 className="desc">Lorem, ipsum dolor sit amet consectetur </h3>
+        <h3 className="desc">Lorem, ipsum dolor sit amet consectetu </h3>
       </div>
       <div
         className="cart"

@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.8.3",
     "annyang": "^2.6.1",
     "axios": "^0.24.0",
+    "create-app-react": "^1.0.6",
     "firebase": "^9.5.0",
     "http-proxy-middleware": "^0.19.1",
     "prop-types": "^15.7.2",

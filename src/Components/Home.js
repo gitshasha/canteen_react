@@ -395,7 +395,7 @@ function Home({ setorderno, setloginstatus }) {
       </div>
       <PostList allorderdetails={allorderdetails} />
 
-      <Hearme
+      {/* <Hearme
         setquantity={setquantity}
         settotalmodal={settotalmodal}
         totalmodal={totalmodal}
@@ -404,7 +404,7 @@ function Home({ setorderno, setloginstatus }) {
         cartitem={cartitem}
         setcartitem={setcartitem}
         setallorderdetails={setallorderdetails}
-      />
+      /> */}
       <button onClick={logout}> Sign Out </button>
     </div>
   );

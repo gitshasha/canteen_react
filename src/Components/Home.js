@@ -7,7 +7,7 @@ import Ordertab from "./Ordertab";
 import { auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Hearme from "./Hearme";
+// import Hearme from "./Hearme";
 
 function Home({ setorderno, setloginstatus }) {
   const [postdat, setpostdat] = useState(null);

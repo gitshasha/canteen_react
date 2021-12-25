@@ -405,7 +405,10 @@ function Home({ setorderno, setloginstatus }) {
         setcartitem={setcartitem}
         setallorderdetails={setallorderdetails}
       /> */}
-      <button onClick={logout}> Sign Out </button>
+      <button className="signout" onClick={logout}>
+        {" "}
+        Sign Out{" "}
+      </button>
     </div>
   );
 }

@@ -110,15 +110,16 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
         </p>
 
         <p>SubTotal-{allsum}</p>
+        <button
+          onClick={() => {
+            holdproceed.style.display = "block";
+          }}
+          className="vieworder"
+        >
+          Order
+        </button>
       </div>
-      <button
-        onClick={() => {
-          holdproceed.style.display = "block";
-        }}
-        className="vieworder"
-      >
-        Order
-      </button>
+
       <div className="holdproceed">
         <div className="proceed">
           <svg

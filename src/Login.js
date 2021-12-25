@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import "./Styles/login.css";
 import { auth } from "./firebase-config";
 import { useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -24,7 +25,10 @@ function Login() {
       // maybe trigger a loading screen
       return;
     }
-    if (user1) history.replace("/home");
+    if (user1) {
+      console.log(user1);
+      history.replace("/home");
+    }
   }, [user1, loading]);
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
@@ -98,7 +102,10 @@ function Login() {
       <h4> User Logged In: </h4>
       {user?.email}
 
-      <button onClick={logout}> Sign Out </button>
+      <button className="signout" onClick={logout}>
+        {" "}
+        Sign Out{" "}
+      </button>
     </div>
   );
 }

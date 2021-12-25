@@ -56,3 +56,9 @@
   background-color: blueviolet;
   border: none;
 }
+@media (max-width: 507px) {
+  .orderbox {
+    background-color: blue;
+    margin-left: 0px;
+  }
+}

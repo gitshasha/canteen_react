@@ -15,6 +15,7 @@
     "create-app-react": "^1.0.6",
     "firebase": "^9.5.0",
     "http-proxy-middleware": "^0.19.1",
+    "json-server": "^0.17.0",
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^3.19.2",
     "ra-data-simple-rest": "^3.19.2",
@@ -42,8 +43,10 @@
     ]
   },
   "build": "CI= react-scripts build",
-  "engines": { "node": "v16.5.0",
-    "npm": "7.19.1"},
+  "engines": {
+    "node": "v16.5.0",
+    "npm": "7.19.1"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -3,7 +3,7 @@ import axios from "axios";
 import "../Styles/orderbox.css";
 
 function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
-  const baseURL = "http://localhost:5000/paymentorder";
+  const baseURL = "https://candata.herokuapp.com/paymentorder";
   var holdproceed = document.querySelector(".holdproceed");
   const [bookcount, setbookcount] = useState(0); //decides to update order
   const [anobj, setanobj] = useState(null); //stores the order before changing
@@ -52,7 +52,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
     setTimeout(async function (e) {
       console.log(anobj);
       const response = await axios.get(
-        `http://localhost:1337/payorder/${a.uniqueid}`
+        `http://localhost:8000/order/${a.uniqueid}`
       );
       console.log("dasfdasff", response);
 
@@ -61,7 +61,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
       }
 
       const options = {
-        key: "rzp_test_z0JK7CVBrOtHDr", // Enter the Key ID generated from the Dashboard
+        key: "rzp_test_V0bUr4809xcQba", // Enter the Key ID generated from the Dashboard
         amount: response.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Acme Corp",
@@ -87,7 +87,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
   useEffect(() => {
     if (payorder) {
       console.log(a);
-      axios.post("http://localhost:5000/orders", anobj);
+      axios.post("https://candata.herokuapp.com/orders", anobj);
       setpayorder(false);
     }
   }, [payorder]);

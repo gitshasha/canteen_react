@@ -52,7 +52,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
     setTimeout(async function (e) {
       console.log(anobj);
       const response = await axios.get(
-        `http://localhost:8000/order/${a.uniqueid}`
+        `http://https://canteback.herokuapp.com/order/${a.uniqueid}`
       );
       console.log("dasfdasff", response);
 

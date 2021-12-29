@@ -52,7 +52,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
     setTimeout(async function (e) {
       console.log(anobj);
       const response = await axios.get(
-        `http://https://canteback.herokuapp.com/order/${a.uniqueid}`
+        `https://canteback.herokuapp.com/order/${a.uniqueid}`
       );
       console.log("dasfdasff", response);
 
@@ -61,7 +61,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
       }
 
       const options = {
-        key: "rzp_test_V0bUr4809xcQba", // Enter the Key ID generated from the Dashboard
+        key: "rzp_live_H7U4V49SRG6y0J", // Enter the Key ID generated from the Dashboard
         amount: response.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Acme Corp",
@@ -110,16 +110,16 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
         </p>
 
         <p>SubTotal-{allsum}</p>
-        <button
-          onClick={() => {
-            holdproceed.style.display = "block";
-          }}
-          className="vieworder"
-        >
-          Order
-        </button>
       </div>
-
+      <button
+        onClick={() => {
+          holdproceed.style.display = "block";
+        }}
+        className="vieworder"
+      >
+        Order
+      </button>
+      {/* proceed modal */}
       <div className="holdproceed">
         <div className="proceed">
           <svg

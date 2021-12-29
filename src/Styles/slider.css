@@ -1,0 +1,12 @@
+.slid {
+  height: 50vh;
+  width: 90vw;
+  margin: auto;
+  background-color: blue;
+}
+
+.slid img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

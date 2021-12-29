@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Login from "./Login";
 import Home from "./Components/Home";
-
+import Slider from "./Components/Slider";
 import { Admin, Resource, ListGuesser } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
 import { Posts } from "./Components/Posts";
@@ -17,6 +17,7 @@ function App() {
   return (
     <div className="app">
       <Router>
+        <Slider />
         <Switch>
           <Route exact path="/">
             <Login />

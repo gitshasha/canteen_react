@@ -3,23 +3,35 @@
   width: 98.7vw;
   position: sticky;
   display: flex;
-  background-color: aqua;
-
+  margin-bottom: 4vh;
   justify-content: space-around;
 }
-.links,
-.mediasvg {
+.title {
+  font-size: 1.6em;
+}
+.displaylist {
+  height: 80vh;
+  display: none;
+  position: absolute;
+  width: 80vw;
+  margin: auto;
+  left: 20vh;
+  z-index: 2;
+}
+
+.links {
   height: 50%;
-  width: 60%;
+  width: 92%;
   margin: auto;
   display: flex;
-
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .cartnumber {
   display: flex;
   position: relative;
-  height: 7vh;
+  height: 6vh;
   width: 8vh;
-  background-color: white;
+
+  margin-left: auto;
+  margin-right: 10vh;
 }

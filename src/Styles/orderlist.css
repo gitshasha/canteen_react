@@ -1,0 +1,23 @@
+.listcontainer {
+  height: 80vh;
+  width: 80vw;
+  background-color: rgb(255, 0, 0);
+  animation-name: bounceInTop;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes bounceInTop {
+  0% {
+    transform: translate3d(0, -300%, 0);
+  }
+  58% {
+    transform: translate3d(0, 27px, 0);
+  }
+  73% {
+    transform: translate3d(0, -12px, 0);
+  }
+  88% {
+    transform: translate3d(0, 7px, 0);
+  }
+}

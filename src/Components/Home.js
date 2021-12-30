@@ -7,6 +7,8 @@ import Ordertab from "./Ordertab";
 import { auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Slider from "./Slider";
+import Navabar from "./Navbar";
 // import Hearme from "./Hearme";
 
 function Home({ setorderno, setloginstatus }) {
@@ -75,6 +77,8 @@ function Home({ setorderno, setloginstatus }) {
   };
   return (
     <div>
+      <Navabar orderno={cartitem} allorderdetails={allorderdetails} />
+      <Slider />
       <div className="modal">
         <div className="modalback"></div>
         <div className="modelcontentcontainer">
@@ -127,10 +131,11 @@ function Home({ setorderno, setloginstatus }) {
                   className="orderplace"
                   onClick={() => {
                     ordertab.style.display = "block";
-                    setorderno(totalmodal.image);
+
                     if (quantity > 0) {
                       setallorders((allorders) => [...allorders, totalmodal]);
                       setcartitem(cartitem + 1);
+
                       setallorderdetails((allorderdetails) => [
                         ...allorderdetails,
                         {

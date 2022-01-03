@@ -1,18 +1,70 @@
 .listcontainer {
-  height: 80vh;
-  width: 80vw;
-  background-color: rgb(255, 0, 0);
+  height: 40vh;
+  width: 50vw;
+  background-color: rgb(240, 240, 255);
   animation-name: bounceInTop;
   animation-duration: 1s;
   position: relative;
+  overflow: scroll;
+  padding: 3vh;
+  position: -webkit-sticky;
+  position: sticky;
 }
-
+/* .fullorderdetails {
+  display: flex;
+  position: fixed;
+  top: 41vh;
+  left: 10vh;
+  height: 40vh;
+  width: 50vw;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+} */
+.orderimage {
+  width: 100%;
+  height: 100%;
+}
+.orderimage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.toget {
+  display: flex;
+  width: 15vw;
+  max-height: 10vh;
+  justify-content: space-around;
+}
+.listcontainer::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.cleardetails {
+  width: 100%;
+  max-height: 10vh;
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+}
+.ordersum {
+  display: flex;
+  width: 100%;
+  font-size: 1.5em;
+  margin: auto;
+  justify-content: space-evenly;
+  /* background-color: green; */
+  border-top: 1px solid gray;
+}
 @keyframes bounceInTop {
   0% {
     transform: translate3d(0, -300%, 0);
   }
   58% {
-    transform: translate3d(0, 27px, 0);
+    transform: translate3d(0, 30px, 0);
   }
   73% {
     transform: translate3d(0, -12px, 0);

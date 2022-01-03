@@ -9,7 +9,7 @@ import { Posts } from "./Components/Posts";
 
 function App() {
   // Lg0cBzdaHOdoKogmf3XmHQaV razorsecrtky
-  const dataProvider = jsonServerProvider("http://localhost:5000");
+  const dataProvider = jsonServerProvider("http://candata.herokuapp.com");
 
   //Rlc66td1AMv4d4NLLsnyxLQ4seckey
   return (
@@ -23,7 +23,7 @@ function App() {
             <Home />
           </Route>
           <Admin dataProvider={dataProvider} exact path="/admin">
-            <Resource name="posts" list={Posts} />
+            <Resource name="paymentorder" list={Posts} />
           </Admin>
         </Switch>
       </Router>

@@ -70,6 +70,7 @@ function Login() {
           <div className="typename">Register User</div>
           <div className="inputcont">
             <input
+              type="email"
               className="userinfo"
               placeholder="Email..."
               onChange={(event) => {
@@ -77,6 +78,7 @@ function Login() {
               }}
             />
             <input
+              type="password"
               className="userinfo"
               placeholder="Password..."
               onChange={(event) => {
@@ -90,6 +92,7 @@ function Login() {
           <div className="typename"> Login</div>
           <div className="inputcont">
             <input
+              type="email"
               className="userinfo"
               placeholder="Email..."
               onChange={(event) => {
@@ -97,6 +100,7 @@ function Login() {
               }}
             />
             <input
+              type="password"
               className="userinfo"
               placeholder="Password..."
               onChange={(event) => {

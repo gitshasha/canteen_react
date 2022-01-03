@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "../Styles/orderbox.css";
 
-function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
+function Ordertab({ cartitem, price, allorderdetails }) {
   const baseURL = "https://candata.herokuapp.com/paymentorder";
   var holdproceed = document.querySelector(".holdproceed");
   const [bookcount, setbookcount] = useState(0); //decides to update order
@@ -61,7 +61,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
       }
 
       const options = {
-        key: "rzp_live_H7U4V49SRG6y0J", // Enter the Key ID generated from the Dashboard
+        key: "rzp_test_nJur06BsoPQb00", // Enter the Key ID generated from the Dashboard
         amount: response.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Acme Corp",
@@ -87,7 +87,13 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
   useEffect(() => {
     if (payorder) {
       console.log(a);
-      axios.post("https://candata.herokuapp.com/orders", anobj);
+      var payorder123 = {
+        Total: anobj.sum,
+        order_id: payorderid,
+        paymentid: paypaymentid,
+      };
+      console.log(payorder123);
+      axios.post("https://candata.herokuapp.com/payments", payorder123);
       setpayorder(false);
     }
   }, [payorder]);
@@ -99,15 +105,7 @@ function Ordertab({ cartitem, price, contfullorderdetails, allorderdetails }) {
   return (
     <div className="orderbox">
       <div className="total">
-        <p
-          className="totalname"
-          onClick={() => {
-            contfullorderdetails.style.display =
-              contfullorderdetails.style.display === "none" ? "block" : "none";
-          }}
-        >
-          Your Order({cartitem})
-        </p>
+        <p className="totalname">Your Order({cartitem})</p>
 
         <p>SubTotal-{allsum}</p>
       </div>

@@ -1,22 +1,17 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 
-const baseURL = "http://localhost:5000/posts";
+const baseURL = "https://candata.herokuapp.com/paymentorder";
 
 export default function PostList({ allorderdetails }) {
   const [post, setPost] = React.useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get(baseURL).then((response) => {
       setPost(response.data);
     });
   }, []);
 
-  useEffect(() => {
-    axios.get(`${baseURL}/1`).then((response) => {
-      setPost(response.data);
-    });
-  }, []);
   function createPost() {
     axios
       .post(baseURL, {

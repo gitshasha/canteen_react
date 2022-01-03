@@ -130,35 +130,8 @@ body {
   top: 90vh;
   left: 10vh;
 }
-/*FullOrder details */
-.contfullorderdetails {
-  display: none;
-}
-.fullorderdetails {
-  display: flex;
-  position: fixed;
-  top: 41vh;
-  left: 10vh;
-  height: 50vh;
-  width: 90vw;
-  background-color: rgb(255, 255, 255);
-  margin: auto;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-}
-.fullorderdetails::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-.cleardetails {
-  width: 90vw;
-  height: 10vh;
-  justify-content: space-around;
-  display: flex;
-  margin-bottom: 0.5em;
-  background-color: rgb(232, 232, 235);
-}
+
+
 /*Media Queries*/
 @media (max-width: 507px) {
   .popular {

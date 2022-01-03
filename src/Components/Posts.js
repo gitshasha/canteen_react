@@ -4,8 +4,8 @@ export const Posts = (props) => (
   <List {...props}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
-      <TextField source="each.title" />
-      <TextField source="user" />
+      <TextField source="sum" />
+      <TextField source="title" />
       <EmailField source="email" />
     </Datagrid>
   </List>

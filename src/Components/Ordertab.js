@@ -104,24 +104,27 @@ function Ordertab({ cartitem, price, allorderdetails }) {
   });
   return (
     <div className="orderbox">
-      <div className="total">
-        <p className="totalname">Your Order({cartitem})</p>
+      <div className="totalcont">
+        <div className="total">
+          <p className="totalname">Your Order({cartitem})</p>
 
-        <p>SubTotal-{allsum}</p>
+          <p>SubTotal-{allsum}</p>
+        </div>
+        <button
+          onClick={() => {
+            holdproceed.style.display = "block";
+          }}
+          className="vieworder"
+        >
+          Order
+        </button>
       </div>
-      <button
-        onClick={() => {
-          holdproceed.style.display = "block";
-        }}
-        className="vieworder"
-      >
-        Order
-      </button>
       {/* proceed modal */}
       <div className="holdproceed">
         <div className="proceed">
           <svg
             onClick={() => {
+              console.log("close");
               holdproceed.style.display = "none";
               setbookcount(0);
             }}
@@ -137,17 +140,29 @@ function Ordertab({ cartitem, price, allorderdetails }) {
             <title>cross</title>
             <path d="M11.42 10.42l3.54-3.54c0.38-0.4 0.38-1.040 0-1.42s-1.020-0.4-1.42 0l-3.54 3.54-3.54-3.54c-0.4-0.4-1.020-0.4-1.42 0s-0.38 1.020 0 1.42l3.54 3.54-3.54 3.54c-0.38 0.38-0.38 1.020 0 1.42 0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28l3.54-3.56 3.54 3.56c0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28c0.38-0.4 0.38-1.040 0-1.42l-3.54-3.54z"></path>
           </svg>
-          <button
-            onClick={() => {
-              setbookcount(1);
-              postpayment();
-            }}
-            className="finalplace"
-          >
-            <a className="App-link" target="_blank" rel="noopener noreferrer">
-              proceed
-            </a>
-          </button>
+          <div className="proceedbuttons">
+            <button
+              onClick={() => {
+                console.log("close");
+                holdproceed.style.display = "none";
+                setbookcount(0);
+              }}
+              className="cancelproceed"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => {
+                setbookcount(1);
+                postpayment();
+              }}
+              className="finalplace"
+            >
+              <a className="App-link" target="_blank" rel="noopener noreferrer">
+                Proceed
+              </a>
+            </button>
+          </div>
         </div>
         <div className="proceedback"></div>
       </div>

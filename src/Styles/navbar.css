@@ -2,7 +2,6 @@
   height: 10vh;
   width: 98.7vw;
   background-color: thistle;
-
   display: flex;
   margin-bottom: 4vh;
   justify-content: space-around;
@@ -36,6 +35,8 @@
   display: flex;
   flex-direction: column;
   display: none;
+  position: fixed;
+  z-index: 1;
 }
 .triangle {
   border: 10px solid transparent;
@@ -61,7 +62,6 @@
   position: relative;
   height: 6vh;
   width: 8vh;
-
   margin-left: auto;
   margin-right: 10vh;
 }

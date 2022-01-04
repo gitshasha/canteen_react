@@ -130,7 +130,21 @@ body {
   top: 90vh;
   left: 10vh;
 }
+.totalorder {
+  top: 90vh;
+  height: 15vh;
+  width: 5vh;
+  left: 10vh;
 
+  align-items: center;
+}
+/* .ordertab::after {
+  background-color: tomato;
+  content: "ssssssssssssssssssssssssssss";
+  z-index: 12;
+  height: 40px;
+  width: 100px;
+} */
 
 /*Media Queries*/
 @media (max-width: 507px) {

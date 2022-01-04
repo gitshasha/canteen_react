@@ -1,14 +1,7 @@
 import React from "react";
 
 import "../Styles/items.css";
-function Items({
-  title,
-  img,
-
-  price,
-  settotalmodal,
-  modal,
-}) {
+function Items({ title, img, price, settotalmodal, modal }) {
   return (
     <div className="itemdisplay">
       <div className="image1">
@@ -18,15 +11,21 @@ function Items({
         <h1 className="itemname">{title}</h1>
         <h3 className="desc">Lorem, ipsum dolor sit amet consectetu </h3>
       </div>
-      <div
-        className="cart"
+      <button
         onClick={() => {
           settotalmodal({ image: img, title: title, price: price });
           modal.style.display = "block";
         }}
+        className="cart"
       >
         Add
-      </div>
+      </button>
+      {/* <div
+        className="cart"
+        
+      >
+        <p className="additem">Add</p>
+      </div> */}
       <div className="rating">
         <h1>4.1</h1>
 

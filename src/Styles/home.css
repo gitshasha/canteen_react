@@ -135,7 +135,6 @@ body {
   height: 15vh;
   width: 5vh;
   left: 10vh;
-
   align-items: center;
 }
 /* .ordertab::after {
@@ -181,5 +180,12 @@ body {
   .catename {
     font-size: 1em;
     margin-left: 0.5em;
+  }
+  .totalorder {
+    height: 10vh;
+  }
+  .ordertab {
+    left: 2vh;
+    font-size: 0.8em;
   }
 }

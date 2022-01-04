@@ -10,7 +10,7 @@
 }
 
 .total {
-  width: 80%;
+  width: 100%;
   user-select: none;
   font-weight: bold;
   font-size: 1.2em;
@@ -20,20 +20,26 @@
 }
 
 .vieworder {
-  height: 70%;
+  height: 6vh;
   width: 9vw;
-  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: rgb(37, 37, 37);
   font-size: 1em;
   letter-spacing: 1px;
-  border: 1px solid rgb(238, 76, 76);
-  background-color: rgb(238, 59, 59);
+  margin: 1vh;
+  background-color: rgb(255, 218, 255);
+  border: none;
   border-radius: 0.5em;
+}
+.vieworder:hover {
+  background-color: rgb(255, 173, 255);
 }
 
 .proceed {
   height: 50vh;
   width: 50vh;
-  background-color: rgb(179, 255, 255);
+  background-color: rgb(238, 210, 238);
   border-radius: 8px;
   position: fixed;
   top: 20%;
@@ -44,7 +50,6 @@
 }
 .proceedbuttons {
   display: flex;
-
   justify-content: space-between;
   margin: auto;
   width: 90%;
@@ -81,12 +86,21 @@
   color: rgb(66, 64, 66);
   border: none;
 }
+.cancelproceed:hover {
+  background-color: thistle;
+}
+.finalplace:hover {
+  background-color: rgb(240, 235, 235);
+}
 .cancelproceed {
   background-color: rgb(240, 235, 235);
 }
 @media (max-width: 507px) {
   .orderbox {
-    background-color: blue;
     margin-left: 0px;
+  }
+  .vieworder {
+    height: 4vh;
+    width: 9vh;
   }
 }

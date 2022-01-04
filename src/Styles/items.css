@@ -6,6 +6,7 @@
   border-radius: 1em;
   background-color: white;
   position: relative;
+  font-family: "Montserrat", sans-serif;
 }
 
 .itemname {
@@ -47,15 +48,26 @@
   width: 1rem;
 }
 .cart {
-  height: 5vh;
-  background-color: rgb(240, 238, 238);
-  width: 10vh;
-  margin-left: auto;
+  font-family: "Montserrat", sans-serif;
+  height: 6vh;
+  background-color: thistle;
+  width: 12vh;
+  font-size: 1em;
+  margin-left: 32vh;
+  color: rgb(58, 57, 58);
   border-radius: 1em;
+  border: none;
+  font-weight: bolder;
 }
+
 @media (max-width: 507px) {
   .itemdisplay {
     height: 35vh;
     width: 40vh;
+  }
+  .cart {
+    height: 4vh;
+    width: 8vh;
+    margin-left: 31vh;
   }
 }

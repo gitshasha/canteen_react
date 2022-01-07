@@ -26,7 +26,7 @@ function Login() {
       return;
     }
     if (user1) {
-      console.log(user1);
+      console.log("jjh", user1);
       history.replace("/home");
     }
   }, [user1, loading]);
@@ -53,7 +53,7 @@ function Login() {
         loginPassword
       );
 
-      console.log(user.accessToken);
+      console.log(user);
     } catch (error) {
       console.log(error.message);
     }

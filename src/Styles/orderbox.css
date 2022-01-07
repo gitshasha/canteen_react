@@ -10,7 +10,7 @@
 }
 
 .total {
-  width: 100%;
+  width: 80%;
   user-select: none;
   font-weight: bold;
   font-size: 1.2em;
@@ -27,7 +27,7 @@
   color: rgb(37, 37, 37);
   font-size: 1em;
   letter-spacing: 1px;
-  margin: 1vh;
+
   background-color: rgb(255, 218, 255);
   border: none;
   border-radius: 0.5em;
@@ -102,5 +102,8 @@
   .vieworder {
     height: 4vh;
     width: 9vh;
+  }
+  .proceed {
+    left: 0;
   }
 }

@@ -4,9 +4,14 @@
   margin: auto;
   margin-top: 15vh;
 }
-
 .slid img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+@media (max-width: 507px) {
+  .slid {
+    height: 30vh;
+    width: 100vw;
+  }
 }

@@ -70,6 +70,77 @@ function Home({ setorderno, setloginstatus }) {
       <Navabar orderno={cartitem} allorderdetails={allorderdetails} />
       <Slider />
       <div className="modal">
+        <div className="modalcont">
+          <div className="modalimage">
+            <img src={totalmodal.image} alt="" />
+            <div className="modaldet">
+              {" "}
+              <h1 className="modaltitle">{totalmodal.title}</h1>
+              <div className="quantotal">{totalmodal.price}</div>
+            </div>
+          </div>
+          <div className="quansum">
+            <div className="finaladd">
+              <div
+                onClick={() => {
+                  setquantity(quantity + 1);
+                }}
+                className="plus"
+              >
+                +
+              </div>
+              <div className="fiadd">{quantity}</div>
+              <div
+                onClick={() => {
+                  if (quantity - 1 >= 0) {
+                    setquantity(quantity - 1);
+                  } else {
+                    setquantity(0);
+                  }
+                }}
+                className="minus"
+              >
+                -
+              </div>
+            </div>
+            <div className="modaladd">
+              <div
+                className="orderplace"
+                onClick={() => {
+                  ordertab.style.display = "block";
+
+                  if (quantity > 0) {
+                    setallorders((allorders) => [...allorders, totalmodal]);
+                    setcartitem(cartitem + 1);
+
+                    setallorderdetails((allorderdetails) => [
+                      ...allorderdetails,
+                      {
+                        each: totalmodal,
+                        sum: totalmodal.price * quantity,
+                        quan: quantity,
+                      },
+                    ]);
+                  }
+                  modal.style.display = "none";
+                }}
+              >
+                Add
+              </div>
+            </div>
+          </div>
+          <div
+            className="modalclose"
+            onClick={() => {
+              modal.style.display = "none";
+            }}
+          >
+            Cancel
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="modal">
         <div className="modalback"></div>
         <div className="modelcontentcontainer">
           <div className="modalcontent">
@@ -93,59 +164,58 @@ function Home({ setorderno, setloginstatus }) {
               <img src={totalmodal.image} alt="" className="modalimage" />
               <div className="modalname">
                 <h1>{totalmodal.title}</h1>
-
-                <div className="finaladd">
-                  <div
-                    onClick={() => {
-                      setquantity(quantity + 1);
-                    }}
-                    className="plus"
-                  >
-                    +
-                  </div>
-                  <div className="fiadd">{quantity}</div>
-                  <div
-                    onClick={() => {
-                      if (quantity - 1 >= 0) {
-                        setquantity(quantity - 1);
-                      } else {
-                        setquantity(0);
-                      }
-                    }}
-                    className="minus"
-                  >
-                    -
-                  </div>
-                </div>
+              </div>
+              <div className="finaladd">
                 <div
-                  className="orderplace"
                   onClick={() => {
-                    ordertab.style.display = "block";
-
-                    if (quantity > 0) {
-                      setallorders((allorders) => [...allorders, totalmodal]);
-                      setcartitem(cartitem + 1);
-
-                      setallorderdetails((allorderdetails) => [
-                        ...allorderdetails,
-                        {
-                          each: totalmodal,
-                          sum: totalmodal.price * quantity,
-                          quan: quantity,
-                        },
-                      ]);
-                    }
-                    modal.style.display = "none";
+                    setquantity(quantity + 1);
                   }}
+                  className="plus"
                 >
-                  Order
+                  +
                 </div>
-                <h1 className="modalprice">{totalmodal.price}</h1>
+                <div className="fiadd">{quantity}</div>
+                <div
+                  onClick={() => {
+                    if (quantity - 1 >= 0) {
+                      setquantity(quantity - 1);
+                    } else {
+                      setquantity(0);
+                    }
+                  }}
+                  className="minus"
+                >
+                  -
+                </div>
+              </div>
+              <h1 className="modalprice">{totalmodal.price}</h1>
+              <div
+                className="orderplace"
+                onClick={() => {
+                  ordertab.style.display = "block";
+
+                  if (quantity > 0) {
+                    setallorders((allorders) => [...allorders, totalmodal]);
+                    setcartitem(cartitem + 1);
+
+                    setallorderdetails((allorderdetails) => [
+                      ...allorderdetails,
+                      {
+                        each: totalmodal,
+                        sum: totalmodal.price * quantity,
+                        quan: quantity,
+                      },
+                    ]);
+                  }
+                  modal.style.display = "none";
+                }}
+              >
+                Order
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="popular">
         <div className="poputitle">
@@ -345,7 +415,7 @@ function Home({ setorderno, setloginstatus }) {
           </div>
         </div>
       </div>
-      {/* Categories */}
+
       <div className="subcategory">
         {options &&
           options.map((post, index) => (
